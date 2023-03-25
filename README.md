@@ -1,4 +1,2 @@
 #Unit Converter Covering:
-Metric units of measurement
-Temperature
-More to be listed if needed
+Metric units of measurement, Temperature, and more to be listed
