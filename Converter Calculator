@@ -1,20 +1,6 @@
 #include <stdio.h>
 int main()
 {
-  char mode, temp_mode, unit;
-  float num_input;
-  printf("Temperature - T, Length - L, Mass - M, Currency - C");
-  printf("Please select a mode of conversion: ");
-  scanf("%c", &mode);
-  if(mode=='T' && 't')
-  {
-    printf("C - Celsius, F - Fahrenheit, K - Kelvin\n");
-    printf("Enter first unit: ");
-    scanf("%c", &temp_mode);
-    
-  }
-}
-
 float Celsius, Kelvin, Fahrenhiet;
     int choice;
     printf("Choose the unit you want to convert: \n");
