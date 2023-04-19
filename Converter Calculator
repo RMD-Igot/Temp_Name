@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main()
 {
-  char mode, unit1, unit2, temp_mode;
+  char mode, temp_mode, unit;
   float num_input;
   printf("Temperature - T, Length - L, Mass - M, Currency - C");
   printf("Please select a mode of conversion: ");
@@ -12,9 +12,12 @@ int main()
     printf("Celsius - C, Farenheit - F, Kelvin - K");
     scanf("%c", &temp_mode);
       switch(temp_mode)
-      case'C' && 'c'
       {
-        
+        case'C' && 'c'
+        {
+        printf("Select other unit");
+        scanf("%c", &unit);
+     break;
       }
   }
 }
