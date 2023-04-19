@@ -15,8 +15,8 @@ float Celsius, Kelvin, Fahrenhiet;
         scanf("%f",&Kelvin);
         Celsius = (Kelvin - 273.15);
         Fahrenhiet = 1.8 *(Kelvin -273.15) + 32.0;
-        printf("In Celsius the value is:\t %f \n",Celsius);
-        printf("In Fahrenhiet the value is:\t %f",Fahrenhiet);
+        printf("In Celsius the value is: %f \n",Celsius);
+        printf("In Fahrenhiet the value is: %f",Fahrenhiet);
         break;
     case 2:
         printf("Enter the temperature in Celsius: ");
@@ -31,13 +31,12 @@ float Celsius, Kelvin, Fahrenhiet;
         scanf("%f",&Fahrenhiet);
         Kelvin = (Fahrenhiet - 32.0) * 5/9 +273.15;
         Celsius = (Fahrenhiet - 32.0) * 5/9;
-        printf("In Celsius the value is :\t %f \n",Celsius);
-        printf("In Kevlin the value is :\t %f \n",Kelvin);
+        printf("In Celsius the value is : %f \n",Celsius);
+        printf("In Kevlin the value is : %f \n",Kelvin);
         break;
     default:
         printf("Please! enter a valid value \n");
         break;
     }
-    printf("\n\n");
     return 0;
 }
