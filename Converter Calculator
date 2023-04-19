@@ -6,18 +6,4 @@ int main()
   printf("Temperature - T, Length - L, Mass - M, Currency - C");
   printf("Please select a mode of conversion: ");
   scanf("%c", &mode);
-  switch(mode)
-  {
-    case'T' && 't':
-    printf("Celsius - C, Farenheit - F, Kelvin - K");
-    scanf("%c", &temp_mode);
-      switch(temp_mode)
-      {
-        case'C' && 'c'
-        {
-        printf("Select other unit");
-        scanf("%c", &unit);
-     break;
-      }
-  }
 }
