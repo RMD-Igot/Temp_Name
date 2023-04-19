@@ -11,6 +11,10 @@ int main()
     case'T' && 't':
     printf("Celsius - C, Farenheit - F, Kelvin - K");
     scanf("%c", &temp_mode);
-    switch
+      switch(temp_mode)
+      case'C' && 'c'
+      {
+        
+      }
   }
 }
