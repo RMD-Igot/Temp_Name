@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void TempCalc(void);
+void LengthCalc(void);
 // MENU INTERFACE
 int main(void) {
     printf("\nConverter Calculator\n");
@@ -67,3 +68,5 @@ float Celsius, Kelvin, Fahrenhiet;
         break;
     }
 }
+void LengthCalc(void)
+{}
