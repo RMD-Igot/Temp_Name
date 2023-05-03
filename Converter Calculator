@@ -1,6 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-void TempCalc()
+
+void TempCalc(void);
+// MENU INTERFACE
+int main(void) {
+    printf("\nConverter Calculator\n");
+
+    int choice, i=0;
+        while(i<10)
+        {
+        printf("\n 1. Insert Items");
+        printf("\n 2. Display Items");
+        printf("\n 3. Update Inventory");
+        printf("\n 4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        system("cls");
+
+        if (choice == 1) {
+            TempCalc();
+        } else {
+            printf("Invalid choice.\n");
+        }
+        }    
+    return 0;
+
+}
+void TempCalc(void)
 {
 float Celsius, Kelvin, Fahrenhiet;
     int choice;
@@ -38,34 +64,5 @@ float Celsius, Kelvin, Fahrenhiet;
     default:
         printf("Please! enter a valid value \n");
         break;
-    }
-    return 0;
-}
-
-// MENU INTERFACE
-void options() {
-    printf("\nConverter Calculator\n");
-
-    int num, choice;
-    while (1) {
-        printf("\n 1. Insert Items");
-        printf("\n 2. Display Items");
-        printf("\n 3. Update Inventory");
-        printf("\n 4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-        system("cls");
-
-        if (choice == 1) {
-            TempCalc();
-        } else if (choice == 2) {
-            display();
-        } else if (choice == 3) {
-            update();
-        } else if (choice == 4) {
-            exitapp();
-        } else {
-            printf("Invalid choice.\n");
-        }
     }
 }
