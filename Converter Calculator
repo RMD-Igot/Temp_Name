@@ -1,15 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
-
+#include <curl/curl.h>
+void Currency(void);
 void TempCalc(void);
 void LengthCalc(void);
 // MENU INTERFACE
 int main(void) {
     printf("\nConverter Calculator\n");
 
-    int choice, i=0;
-        while(i<1)
-        {
+    int choice, i = 0;
+    while (i < 1)
+    {
         printf("\n 1. Temperature Converter");
         printf("\n 2. Length Converter");
         printf("\n 3. Mass Converter");
@@ -19,18 +22,18 @@ int main(void) {
         scanf("%d", &choice);
         system("cls");
 
-        if (choice == 1) {
-            TempCalc();
-        } else {
+        if (choice == 1) { TempCalc(); }
+        else if (choice == 4) { Currency(); }
+        else {
             printf("Invalid choice.\n");
         }
-        }    
+    }
     return 0;
 
 }
 void TempCalc(void)
 {
-float Celsius, Kelvin, Fahrenhiet;
+    float Celsius, Kelvin, Fahrenhiet;
     int choice;
     printf("Choose the unit you want to convert: \n");
     printf("1.Kelvin\n");
@@ -41,32 +44,64 @@ float Celsius, Kelvin, Fahrenhiet;
     {
     case 1:
         printf("Enter the temperature in kelvin: ");
-        scanf("%f",&Kelvin);
+        scanf("%f", &Kelvin);
         Celsius = (Kelvin - 273.15);
-        Fahrenhiet = 1.8 *(Kelvin -273.15) + 32.0;
-        printf("In Celsius the value is: %f \n",Celsius);
-        printf("In Fahrenhiet the value is: %f",Fahrenhiet);
+        Fahrenhiet = 1.8 * (Kelvin - 273.15) + 32.0;
+        printf("In Celsius the value is: %f \n", Celsius);
+        printf("In Fahrenhiet the value is: %f", Fahrenhiet);
         break;
     case 2:
         printf("Enter the temperature in Celsius: ");
-        scanf("%f",&Celsius);
+        scanf("%f", &Celsius);
         Kelvin = (Celsius + 273.15);
         Fahrenhiet = (Celsius * 1.8) + 32.0;
-        printf("In kelvin the value is : %f \n",Kelvin);
-        printf("In Fahrenhiet the value is: %f",Fahrenhiet);
+        printf("In kelvin the value is : %f \n", Kelvin);
+        printf("In Fahrenhiet the value is: %f", Fahrenhiet);
         break;
     case 3:
         printf("Enter the temperature in fahrenhite: ");
-        scanf("%f",&Fahrenhiet);
-        Kelvin = (Fahrenhiet - 32.0) * 5/9 +273.15;
-        Celsius = (Fahrenhiet - 32.0) * 5/9;
-        printf("In Celsius the value is : %f \n",Celsius);
-        printf("In Kevlin the value is : %f \n",Kelvin);
+        scanf("%f", &Fahrenhiet);
+        Kelvin = (Fahrenhiet - 32.0) * 5 / 9 + 273.15;
+        Celsius = (Fahrenhiet - 32.0) * 5 / 9;
+        printf("In Celsius the value is : %f \n", Celsius);
+        printf("In Kevlin the value is : %f \n", Kelvin);
         break;
     default:
         printf("Please! enter a valid value \n");
         break;
     }
+}
+void Currency(void) {
+    CURL* curl;
+    CURLcode res;
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl = curl_easy_init();
+    char t[99999];
+    char x[10];
+    char y[10];
+    char url[1000];
+    printf("Enter a 3-letter currency code to convert to: ");
+    scanf("%s", &x);
+
+    printf("Enter a 3-letter currency code to convert from: ");
+    scanf("%s", &y);
+
+    printf("Enter amount in %s: ", y);
+    scanf("%s", &t);
+
+    sprintf(url, "https://api.apilayer.com/exchangerates_data/convert?to=%s&from=%s&amount=%s", x, y, t);
+    if (curl) {
+        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "GET");
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+        curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+        struct curl_slist* headers = NULL;
+        headers = curl_slist_append(headers, "apikey: A8axdoDUDaF9Lu1cw8tkwx7JIFpntPmd");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        res = curl_easy_perform(curl);
+    }
+    curl_easy_cleanup(curl);
 }
 void LengthCalc(void)
 {}
