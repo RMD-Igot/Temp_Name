@@ -105,3 +105,86 @@ void Currency(void) {
 }
 void LengthCalc(void)
 {}
+
+
+
+
+
+
+
+
+#include "stdafx.h"
+
+#include <iostream>
+
+#include <string>
+
+using namespace std;
+
+double pounds_g = 453.6;
+
+double oz_g = 28.3;
+
+int promptAndGetInt(string msg);
+
+int convertToGrams();
+
+int outputResults();
+
+int main() {
+
+	int pounds, ounces, grams;
+
+	cout << "  ~ wELcOmE tO tHe wEigHt cOnVeRtEr pRoGrAm ~\n"
+
+		"\nThis program will convert pounds and ounces to kilgrams and grams\n"
+
+		"First I will prompt you for number of pounds and then the number of ounces\n";
+
+	cout << promptAndGetInt("\nPounds: ") << endl;
+
+	cout << promptAndGetInt("\nOunces: ") << endl; 
+
+	
+
+	system("pause");
+
+	return 0;
+
+}
+
+int promptAndGetInt(string msg) {
+
+	cout << msg;
+
+	char ch;
+
+	cin >> ch;
+
+	while (isdigit(ch) == false) // cctypelib
+
+		cin >> ch;
+
+	cin.putback(ch);
+
+	int response;
+
+	cin >> response;
+
+	return response;
+
+}
+
+int convertToGrams() {
+
+	
+
+	return 0;
+
+}
+
+int outputResults() {
+
+	return 0;
+
+}
