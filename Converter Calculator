@@ -19,16 +19,14 @@ int main(void) {
         printf("\n 2. Length Converter");
         printf("\n 3. Mass Converter");
         printf("\n 4. Currency");
-        printf("\n 5. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         system("cls");
 
-        if (choice == 1) { TempCalc(); }
-        else if (choice == 2) { LengthCalc(); }
-        else if (choice == 3) { MassCalc(); }
-        else if (choice == 4) { Currency(); }
-        else if (choice == 5) { void exit(); }
+        if (choice == 1) { TempCalc(); } // calls on TempCalc function 
+        else if (choice == 2) { LengthCalc(); } // calls on LenghtCalc function
+        else if (choice == 3) { MassCalc(); } // calls on MassCalc function
+        else if (choice == 4) { Currency(); } // calls on Currency function
         else {
             printf("Invalid choice.\n");
         }
@@ -48,7 +46,7 @@ void TempCalc(void)
     scanf("%d", &choice);
     switch (choice)
     {
-    case 1:
+    case 1: // Kelvin to Fahrenheit and Celsius
         printf("Enter the temperature in kelvin: ");
         scanf("%f", &Kelvin);
         Celsius = (Kelvin - 273.15);
@@ -56,7 +54,7 @@ void TempCalc(void)
         printf("In Celsius the value is: %f \n", Celsius);
         printf("In Fahrenhiet the value is: %f", Fahrenhiet);
         break;
-    case 2:
+    case 2: // Celsius to Fahrenheit and Kelvin
         printf("Enter the temperature in Celsius: ");
         scanf("%f", &Celsius);
         Kelvin = (Celsius + 273.15);
@@ -64,7 +62,7 @@ void TempCalc(void)
         printf("In kelvin the value is : %f \n", Kelvin);
         printf("In Fahrenhiet the value is: %f", Fahrenhiet);
         break;
-    case 3:
+    case 3: // Fahrenheit to Celsius and Kelvin
         printf("Enter the temperature in fahrenhite: ");
         scanf("%f", &Fahrenhiet);
         Kelvin = (Fahrenhiet - 32.0) * 5 / 9 + 273.15;
@@ -72,12 +70,13 @@ void TempCalc(void)
         printf("In Celsius the value is : %f \n", Celsius);
         printf("In Kevlin the value is : %f \n", Kelvin);
         break;
-    default:
-        printf("Please! enter a valid value \n");
+    default: //request for valid input
+        printf("Please enter a valid number: ");
         TempCalc();
     }
 }
 void Currency(void) {
+    // intialize curl
     CURL* curl;
     CURLcode res;
     curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -94,8 +93,9 @@ void Currency(void) {
 
     printf("Enter amount in %s: ", y);
     scanf("%s", &t);
-
-    sprintf(url, "https://api.apilayer.com/exchangerates_data/convert?to=%s&from=%s&amount=%s", x, y, t);
+    // edit request URL
+    sprintf(url, "https://api.apilayer.com/exchangerates_data/convert?to=%s&from=%s&amount=%s", x, y, t)
+    // make request to API
     if (curl) {
         curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "GET");
         curl_easy_setopt(curl, CURLOPT_URL, url);
@@ -118,32 +118,32 @@ void LengthCalc(void)
     scanf("%d", &choice);
     switch (choice)
     {
-    case 1:
+    case 1: //inches to cm
         printf("Enter length in inches: ");
         scanf("%f", &Length);
         Converted = Length * 2.54;
         printf("%f inches is equal to %.3f cm", Length, Converted);
         break;
-    case 2:
+    case 2: // feet to m
         printf("Enter length in feet: ");
         scanf("%f", &Length);
         Converted = Length * 0.3048;
         printf("%f feet is equal to %.3f m", Length, Converted);
         break;
-    case 3:
+    case 3: // miles to km
         printf("Enter length in miles: ");
         scanf("%f", &Length);
         Converted = Length * 1.609344;
         printf("%f miles is equal to %.3f km", Length, Converted);
         break;
-    case 4:
+    case 4: // yards to m
         printf("Enter length in yards: ");
         scanf("%f", &Length);
         Converted = Length * 0.9144;
         printf("%f yards is equal to %.3f m", Length, Converted);
         break;
-    default:
-        printf("Enter a valid number:");
+    default: // request for valid input
+        printf("Please enter a valid number: ");
         LengthCalc();
     }
 }
@@ -156,26 +156,26 @@ void MassCalc(void)
     scanf("%d", &choice);
     switch (choice)
     {
-    case 1:
+    case 1: // lbs to kg
         printf("Enter mass in lbs (pounds): ");
         scanf("%f", &m1);
         m2 = m1 * 0.45359237;
         printf("%f lbs is equal to %.3f kg", m1, m2);
         break;
-    case 2:
+    case 2: // ounce to g
         printf("Enter mass in oz (ounce): ");
         scanf("%f", &m1);
         m2 = m1 * 28.34952;
         printf("%f oz is equal to %.3f in g", m1, m2);
         break;
-    case 3:
+    case 3: // stone to kg
         printf("Enter mass in st (stone): ");
         scanf("%f", &m1);
         m2 = m1 * 6.35029;
         printf("%f st is equal to %.4f in kg", m1, m2);
         break;
-    default:
-        printf("Please enter a valid number");
+    default: // request for valid input 
+        printf("Please enter a valid number: ");
         MassCalc();
     }
 }
