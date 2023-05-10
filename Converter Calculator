@@ -25,6 +25,7 @@ int main(void) {
         system("cls");
 
         if (choice == 1) { TempCalc(); }
+        else if (choice == 2) { LengthCalc(); }
         else if (choice == 3) { MassCalc(); }
         else if (choice == 4) { Currency(); }
         else if (choice == 5) { void exit(); }
