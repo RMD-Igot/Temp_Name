@@ -3,8 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <curl/curl.h>
+//Function Names to call
 void Currency(void);
 void TempCalc(void);
+void MassCalc(void);
 void LengthCalc(void);
 // MENU INTERFACE
 int main(void) {
@@ -23,7 +25,9 @@ int main(void) {
         system("cls");
 
         if (choice == 1) { TempCalc(); }
+        else if (choice == 3) { MassCalc(); }
         else if (choice == 4) { Currency(); }
+        else if (choice == 5) { void exit(); }
         else {
             printf("Invalid choice.\n");
         }
@@ -31,6 +35,7 @@ int main(void) {
     return 0;
 
 }
+//Functions
 void TempCalc(void)
 {
     float Celsius, Kelvin, Fahrenhiet;
@@ -68,7 +73,7 @@ void TempCalc(void)
         break;
     default:
         printf("Please! enter a valid value \n");
-        break;
+        TempCalc();
     }
 }
 void Currency(void) {
@@ -104,7 +109,72 @@ void Currency(void) {
     curl_easy_cleanup(curl);
 }
 void LengthCalc(void)
-{}
-
-
-
+{
+    int choice;
+    float Length, Converted;
+    printf("Choose a conversion:");
+    printf("\n1: Inches to Cm (centimeters)\n2. ft (feet) to m (meters)\n 3. mi (miles) to km (kilometer)\n 4. yd (yards) to m (meters)\n");
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        printf("Enter length in inches: ");
+        scanf("%f", &Length);
+        Converted = Length * 2.54;
+        printf("%f inches is equal to %.3f cm", Length, Converted);
+        break;
+    case 2:
+        printf("Enter length in feet: ");
+        scanf("%f", &Length);
+        Converted = Length * 0.3048;
+        printf("%f feet is equal to %.3f m", Length, Converted);
+        break;
+    case 3:
+        printf("Enter length in miles: ");
+        scanf("%f", &Length);
+        Converted = Length * 1.609344;
+        printf("%f miles is equal to %.3f km", Length, Converted);
+        break;
+    case 4:
+        printf("Enter length in yards: ");
+        scanf("%f", &Length);
+        Converted = Length * 0.9144;
+        printf("%f yards is equal to %.3f m", Length, Converted);
+        break;
+    default:
+        printf("Enter a valid number:");
+        LengthCalc();
+    }
+}
+void MassCalc(void)
+{
+    int choice;
+    float m1, m2;
+    printf("Choose a conversion:");
+    printf("\n1. lbs (pound) to kg (kilogram)\n2. oz (ounce) to g (gram)\n3. st (stone) to kg (kilogram)\n");
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        printf("Enter mass in lbs (pounds): ");
+        scanf("%f", &m1);
+        m2 = m1 * 0.45359237;
+        printf("%f lbs is equal to %.3f kg", m1, m2);
+        break;
+    case 2:
+        printf("Enter mass in oz (ounce): ");
+        scanf("%f", &m1);
+        m2 = m1 * 28.34952;
+        printf("%f oz is equal to %.3f in g", m1, m2);
+        break;
+    case 3:
+        printf("Enter mass in st (stone): ");
+        scanf("%f", &m1);
+        m2 = m1 * 6.35029;
+        printf("%f st is equal to %.4f in kg", m1, m2);
+        break;
+    default:
+        printf("Please enter a valid number");
+        MassCalc();
+    }
+}
