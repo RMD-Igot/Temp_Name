@@ -94,19 +94,19 @@ void Currency(void) {
     printf("Enter amount in %s: ", y);
     scanf("%s", &t);
     // edit request URL
-    sprintf(url, "https://api.apilayer.com/exchangerates_data/convert?to=%s&from=%s&amount=%s", x, y, t)
-    // make request to API
-    if (curl) {
-        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "GET");
-        curl_easy_setopt(curl, CURLOPT_URL, url);
-        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-        curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
-        struct curl_slist* headers = NULL;
-        headers = curl_slist_append(headers, "apikey: A8axdoDUDaF9Lu1cw8tkwx7JIFpntPmd");
-        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+    sprintf(url, "https://api.apilayer.com/exchangerates_data/convert?to=%s&from=%s&amount=%s", x, y, t);
+        // make request to API
+        if (curl) {
+            curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "GET");
+            curl_easy_setopt(curl, CURLOPT_URL, url);
+            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+            curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+            struct curl_slist* headers = NULL;
+            headers = curl_slist_append(headers, "apikey: A8axdoDUDaF9Lu1cw8tkwx7JIFpntPmd");
+            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
-        res = curl_easy_perform(curl);
-    }
+            res = curl_easy_perform(curl);
+        }
     curl_easy_cleanup(curl);
 }
 void LengthCalc(void)
